@@ -1,5 +1,4 @@
 #include <iostream>
-
 using namespace std;
 
 long long totalSquares(int n)
@@ -13,18 +12,21 @@ long long totalRectangles(int n)
     return x * x;
 }
 
+long long rectanglesExcludingSquares(int n)
+{
+    return totalRectangles(n) - totalSquares(n);
+}
+
 int main()
 {
     int n;
-
-    cout << "Enter board size: ";
     cin >> n;
 
-    cout << "Total Squares   : "
-         << totalSquares(n) << endl;
-
-    cout << "Total Rectangles: "
+    cout << "Squares: " << totalSquares(n) << endl;
+    cout << "Total Rectangles (including squares): "
          << totalRectangles(n) << endl;
+    cout << "Rectangles (excluding squares): "
+         << rectanglesExcludingSquares(n) << endl;
 
     return 0;
 }
