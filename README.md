@@ -54,30 +54,24 @@ Repeat this calculation for all gates.
 ## 2. Lift Minimum Energy
 
 ### Problem Statement
-
-A building has **20 floors**.
-
-The lift starts at floor **K**.
-
+A building has **20 floors**. The lift starts at floor **K**. 
 Energy consumption rules:
+- Starting/stopping at a floor costs **5 units** (charged once per unique floor visited).
+- Moving between adjacent floors costs **1 unit per floor**.
 
-- Starting the lift costs **5 units**
-- Moving between adjacent floors costs **1 unit per floor**
-
-Given a sequence of floor requests, calculate the total energy required to serve all requests.
+Given an **unsorted sequence of floor requests**, calculate the minimum total energy required to serve all requests. If a request is at the initial starting floor, it burns **0 energy** (the lift is already there).
 
 ### Approach
+To find the absolute minimum energy for unsorted requests:
+1. **Filter Initial Floor:** Remove any requests that match the starting floor immediately, as they require no movement or restart energy.
+2. **Deduplicate & Sort:** Sort the remaining requests and remove duplicates to avoid double-charging the stop cost for the same floor.
+3. **Optimize Path Direction:** - If the starting floor sits in between the minimum and maximum requested floors, the algorithm calculates and compares two candidate paths: going **down first** then up, or going **up first** then down.
+   - It picks the path yielding the minimum total travel distance.
 
-For each request:
+* **Time Complexity:** $O(Nlog N)$ due to sorting.
+* **Space Complexity:** $O(N)$ to isolate and process unique requests.
 
-- Add the lift startup cost.
-- Add the distance travelled from the current floor.
-- Update the current floor.
-
-**Time Complexity:** O(N)
-
-**Space Complexity:** O(1)
-
+---
 ---
 
 ## 3. Count Squares and Rectangles
