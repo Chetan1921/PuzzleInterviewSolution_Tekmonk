@@ -5,10 +5,7 @@
 
 using namespace std;
 
-/**
- * Calculates the minimum energy required to service all floor requests.
- * Uses an optimized SCAN (Elevator) routing strategy for unsorted inputs.
- */
+
 int minimumEnergy(int startFloor, const vector<int> &requests)
 {
     // 1. Manually filter out requests that match the startFloor (0 energy burned)
